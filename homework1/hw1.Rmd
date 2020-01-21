@@ -2,7 +2,9 @@
 title: "Homework1"
 author: "Yilin"
 date: "1/20/2020"
-output: md_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ```{r}
@@ -66,7 +68,7 @@ predict_lin <- function(x, beta)
   beta[1] + beta[2]*x
 ```
 
-## L2 loss
+### L2 loss
 ```{r}
 ## fit linear model
 ## fit linear model
@@ -159,7 +161,7 @@ predict_exp <- function(x, beta)
   beta[1] + beta[2]*exp(-beta[3]*x)
 ```
 
-## L2 loss
+### L2 loss
 ```{r}
 ## fit linear model
 ## fit linear model
