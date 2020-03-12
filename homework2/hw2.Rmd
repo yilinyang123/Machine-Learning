@@ -21,18 +21,18 @@ data("prostate")
 Use the cor function to reproduce the correlations listed in HTF Table 3.1, page 50.
 
 ```{r}
-cor(prostate)
+prostate_train <- prostate %>%
+  filter(train == TRUE) %>% 
+  select(-train)
+```
+
+```{r}
+cor(prostate_train)
 ```
 
 Treat lpsa as the oucome, and use all other variables in the data set as predictors.
 
 With the training subset, train a least-squares regression model with all predictors using the lm function (with the training subset).
-
-```{r}
-prostate_train <- prostate %>%
-  filter(train == TRUE) %>% 
-  select(-train)
-```
 
 predict lpsa consider all other predictors\
 lm fits using L2 loss
@@ -55,7 +55,7 @@ prostate_test <- prostate %>%
 L2_loss <- function(y, yhat)
   (y-yhat)^2
 error <- function(dat, fit, loss=L2_loss)
-  mean(loss(dat$lcavol, predict(fit, newdata=dat)))
+  mean(loss(dat$lpsa, predict(fit, newdata=dat)))
 ```
 
 
